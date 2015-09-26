@@ -2,18 +2,22 @@ if (Meteor.isClient) {
   //Geolocation edits
 Meteor.setInterval(function() {
   navigator.geolocation.getCurrentPosition(function(position) {
+
+
   Session.set('lat', position.coords.latitude);
   Session.set('lon', position.coords.longitude);
       });
 
       var lat = Session.get('lat');
       var lon = Session.get('lon');
+      Locations.insert({
+        latitude: lat,
+        longitude: lon,
+        owner: Meteor.userId(),
+        username: Meteor.user().username
+      });
   }, 5000);
 
-
-
-  // counter starts at 0
-  Session.setDefault('counter', 0);
 
   Template.body.helpers({
     vices: function() {
@@ -79,6 +83,7 @@ if (Meteor.isServer) {
 }
 
 Vices = new Mongo.Collection("vices");
+Locations = new Mongo.Collection("locations");
 Contacts = new Mongo.Collection("contacts");
 
 Meteor.methods({
@@ -103,3 +108,4 @@ Meteor.methods({
 
   }
 });
+

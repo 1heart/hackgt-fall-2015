@@ -1,0 +1,15 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "cordova": {}
+    },
+    "packages": {
+      "cordova": {
+        "git": "https://github.com/raix/Meteor-cordova.git",
+        "tag": "v0.0.8",
+        "commit": "4eff8b9a853673f5f4b450a0102e78f554836da4"
+      }
+    }
+  }
+}

@@ -1,37 +1,69 @@
 <head>
-  <title>VirtuoCity</title>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin Slab">
-</head>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>VirtuoCity</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico">
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
 
 <body>
-  <div id = "header">
-  <h1><b>Virtuo</b>City</h1>
-  </div>
-  {{> loginButtons}}
 
-  {{ #if currentUser }}
-    <div id = "content">
-      <div id = "viceSec">
-        <form class="new-vice">
-          <input type="text" name="text" placeholder="Add a vice you want to avoid." />
-          <input type="submit" />
-        </form>
-        <ul id = "list">
-        	{{#each vices}}
-            {{> vice}}
-          {{/each}}
-        </ul>
+  <div class="container-full">
+    <div class="row">
+      <div class="col-lg-12 text-left v-left" style="margin-left:16px;margin-top:10px;">
+        {{> loginButtons}}
       </div>
-      <div id = "contactSec">
-        <p>Contact name: {{ contact.contactName }}</p>
-        <p>Contact number: {{ contact.contactNumber }}</p>
-          {{> emergencyContact}}  
+      <div class="col-lg-12 text-center v-center">
+        <h1>VirtuoCity</h1>
+        <p class="lead">Track your virtues.</p>
+        <br><br><br>
+        <div class="row">
+          <div class="col-lg-12 text-center v-center" style="font-size:24pt;">
+            <div id="notification-safe">    
+              <p>You're good.</p>
+            </div>
+            <div id="notification-dangerous">
+              <p>Where do you think you are, kid?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <button id="toggle-update-info">Update info</button>
+          <div id="update-info">
+            {{ #if currentUser }}
+              <p>User: {{ username }}</p>
+              <form class="new-vice">
+                <input type="text" name="text" placeholder="Add a vice you want to avoid." />
+                <input type="submit" />
+              </form>
+              <ul>
+                {{#each vices}}
+                  {{> vice}}
+                {{/each}}
+              </ul>
+              <div>
+                <p>Contact name: {{ contact.contactName }}</p>
+                <p>Contact number: {{ contact.contactNumber }}</p>
+                  {{> emergencyContact value=contact.contactName}}  
+              </div>
+            {{ /if }}
+          </div>
+        </div>
+
       </div>
-    </div>
-  {{ /if }}
+    </div> <!-- /row -->
+  <br><br><br><br><br>
+  </div> <!-- /container full -->
+  
 </body>
 
 <template name="vice">
@@ -40,8 +72,8 @@
 
 <template name="emergencyContact">
   <form class="editContact">
-    <input type="text" name="contactName" placeholder="Contact name" value=""/><br>
-    <input type="tel" pattern='[\(]\d{3}[\)] \d{3}[\-]\d{4}' name="contactNumber" placeholder="Contact number (999) 999-9999" /><br>
+    <input type="text" name="contactName" placeholder="Contact name" />
+    <input type="tel" pattern='^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$' name="contactNumber" placeholder="Contact number (999) 999-9999" />
     <input type="submit" />
   </form>
 </template>

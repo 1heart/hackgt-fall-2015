@@ -1,84 +1,40 @@
-/* CSS declarations go here */
-
-html {
-  height: 100%;
-}
-
-header {
-  position: relative;
-}
-
-#header {
-  background-color: #5f5f5f;
-}
-
-body {
-  background-color: #CCFFFF;
-  background-image: linear-gradient(to bottom, #CCFFFF, #FFFFFF 100%);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-
-  font-family: 'open sans', serif;
-  font-size: 14px;
-
-  text-align: center;
-  margin-top:-20px;
-  padding-top:0px;
-  margin-bottom: 15px;
+html,body {
+  height:100%;
 }
 
 h1 {
-  font-size: 3em;
-  font-family: 'Josefin Slab', serif;
-  text-align: center;
-  margin-bottom: 15px;
-  color: #66CCFF;
+  font-family:Pacifico;
+  font-size:44pt;
+  color:#DDCCEE;
 }
 
-b {
-  color: #003399;
-  font-weight: 900;
+.lead {
+  color:#DDCCEE;
 }
 
-#content {
-  width: 80%;
-  margin: auto auto;
-  padding: 10px
+/* Custom container */
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+  min-height:100%;
+  background-color:#110022;
+  color:#eee;
+  overflow:hidden;
 }
 
-#viceSec {
-  width: 50%;
-  float: left;
-  padding: 10px;
+.container-full a {
+  color:#efefef;
+  text-decoration:none;
 }
 
-#vices {
-  width: 300px;
-  float: left;
-  padding: 10px;
-}
-
-#contactSec {
-  width: 50%;
-  float: left;
-  padding: 10px;
-}
-
-#login-buttons {
-  float: left;
-  padding: 10px;
+.v-center {
+  margin-top:7%;
 }
 
 li {
-  position: relative;
-  list-style: none;
-  padding: 15px;
+   list-style-type: none;
 }
 
-li .text {
-  margin-left: 10px;
-}
-
-div {
-
+#toggle-update-info {
+  color: black;
 }
