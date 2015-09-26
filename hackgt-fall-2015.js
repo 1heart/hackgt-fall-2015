@@ -2,6 +2,8 @@ if (Meteor.isClient) {
   //Geolocation edits
 Meteor.setInterval(function() {
   navigator.geolocation.getCurrentPosition(function(position) {
+
+
   Session.set('lat', position.coords.latitude);
   Session.set('lon', position.coords.longitude);
       });
@@ -106,3 +108,4 @@ Meteor.methods({
 
   }
 });
+
