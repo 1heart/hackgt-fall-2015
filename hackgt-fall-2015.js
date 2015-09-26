@@ -8,8 +8,6 @@ Meteor.setInterval(function() {
 
       var lat = Session.get('lat');
       var lon = Session.get('lon');
-      console.log(lat);
-      console.log(lon);
   }, 5000);
 
 
