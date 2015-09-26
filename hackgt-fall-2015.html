@@ -6,26 +6,40 @@
   <h1>VirtuoCity</h1>
   {{> loginButtons}}
 
-  <form class="new-vice">
-  <input type="text" name="text" placeholder="Add a vice you want to avoid." />
-  </form>
+  {{ #if currentUser }}
 
-  <ul>
-  	{{#each vices}}
-  		{{> vice}}
-	{{/each}}
-  </ul>
-  <div>
-  	{{> emergencyContact}}
-  </div>
+    <form class="new-vice">
+      <input type="text" name="text" placeholder="Add a vice you want to avoid." />
+      <input type="submit" />
+    </form>
+
+    <ul>
+    	{{#each vices}}
+        {{> vice}}
+      {{/each}}
+    </ul>
+    <div>
+
+    <p>Contact name: {{ contact.contactName }}</p>
+    <p>Contact number: {{ contact.contactNumber }}</p>
+
+      {{> emergencyContact}}  
+    </div>
+  {{ /if }}
 </body>
 
 <template name="vice">
-<li>{{text}} <button class="delete">&times;</button></li>
 
+  {{ username }}
+
+
+  <li>{{text}} <button class="delete">&times;</button></li>
 </template>
 
 <template name="emergencyContact">
-<p>{{contactName}}</p>
-<p>{{contactNumber}}</p>
+  <form class="editContact">
+    <input type="text" name="contactName" placeholder="Contact name" value=""/>
+    <input type="tel" pattern='[\(]\d{3}[\)] \d{3}[\-]\d{4}' name="contactNumber" placeholder="Contact number (999) 999-9999" />
+    <input type="submit" />
+  </form>
 </template>

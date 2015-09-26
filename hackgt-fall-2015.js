@@ -8,6 +8,7 @@ Meteor.setInterval(function() {
 
       var lat = Session.get('lat');
       var lon = Session.get('lon');
+<<<<<<< HEAD
       console.log(lat);
       console.log(lon);
       Locations.insert({
@@ -16,24 +17,20 @@ Meteor.setInterval(function() {
         owner: Meteor.userId(),
         username: Meteor.user().username
       });
+=======
+>>>>>>> e91b7ce452643a59879e0e7d4465efec7ac6b7cb
   }, 5000);
 
-
-
-  // counter starts at 0
-  Session.setDefault('counter', 0);
 
   Template.body.helpers({
     vices: function() {
       return Vices.find({$or: [{owner: Meteor.userId()}]});
     },
-    contactName: function() {
-      return "myName";
-    },
-    contactNumber: function() {
-      return "myNumber";
+    contact: function() {
+      // return Contacts.find({});
+      return Contacts.findOne({owner: Meteor.userId()});
     }
-  });
+  }); 
 
   Template.body.events({
     "submit .new-vice": function(event) {
@@ -52,6 +49,21 @@ Meteor.setInterval(function() {
 
       // Clear form
       event.target.text.value = "";
+    }
+  });
+
+  Template.emergencyContact.events({
+    "submit .editContact": function(event){
+      event.preventDefault();
+
+      var name = event.target.contactName.value;
+      var number = event.target.contactNumber.value;
+
+      Meteor.call("addContact", name, number);
+ 
+      event.target.contactName.value = "";
+      event.target.contactNumber.value = "";
+
     }
   });
 
@@ -75,3 +87,27 @@ if (Meteor.isServer) {
 
 Vices = new Mongo.Collection("vices");
 Locations = new Mongo.Collection("locations");
+Contacts = new Mongo.Collection("contacts");
+
+Meteor.methods({
+  addContact: function(name, number) {
+    if (! Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
+
+    }
+
+    Contacts.update(
+        {owner: Meteor.userId()},
+        {
+          owner: Meteor.userId(),
+          username: Meteor.user().username,
+          contactName: name,
+          contactNumber: number
+        },
+        {
+          upsert: true
+        }
+      );
+
+  }
+});
