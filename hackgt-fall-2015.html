@@ -18,14 +18,38 @@
 
   <div class="container-full">
     <div class="row">
-      <div class="col-lg-12 text-left v-left" style="margin-left:16px;margin-top:10px;">
-        {{> loginButtons}}
-      </div>
       <div class="col-lg-12 text-center v-center">
         <h1>VirtuoCity</h1>
         <p class="lead">Track your virtues.</p>
-        <br><br><br>
+        <div id="signin" class="col-lg-12 text-center v-top">
+          {{> loginButtons}}
+        </div>
+        <br>
         <div class="row">
+
+          <div class="col-lg-12">
+            <button class="black" id="toggle-update-info">Update info</button>
+            <div id="update-info">
+              <br>
+              {{ #if currentUser }}
+                <form class="new-vice">
+                  <input class="black" type="text" name="text" placeholder="Add a vice" />
+                  <input class="black" type="submit" />
+                </form>
+                <ul class = "vices">
+                  {{#each vices}}
+                    {{> vice}}
+                  {{/each}}
+                </ul>
+                <div>
+                  <p>Contact name: {{ contact.contactName }}</p>
+                  <p>Contact number: {{ contact.contactNumber }}</p>
+                    {{> emergencyContact value=contact.contactName}}  
+                </div>
+              {{ /if }}
+            </div>
+          </div>
+
           <div class="col-lg-12 text-center v-center" style="font-size:24pt;">
             <div id="notification-safe">    
               <p>You're good.</p>
@@ -35,30 +59,7 @@
             </div>
           </div>
         </div>
-
-        <div class="col-lg-12">
-          <button class="black" id="toggle-update-info">Update info</button>
-          <div id="update-info">
-            {{ #if currentUser }}
-              <p>User: {{ username }}</p>
-              <form class="new-vice">
-                <input class="black" type="text" name="text" placeholder="Add a vice you want to avoid." />
-                <input class="black" type="submit" />
-              </form>
-              <ul>
-                {{#each vices}}
-                  {{> vice}}
-                {{/each}}
-              </ul>
-              <div>
-                <p>Contact name: {{ contact.contactName }}</p>
-                <p>Contact number: {{ contact.contactNumber }}</p>
-                  {{> emergencyContact value=contact.contactName}}  
-              </div>
-            {{ /if }}
-          </div>
-        </div>
-
+        
       </div>
     </div> <!-- /row -->
   <br><br><br><br><br>
@@ -67,13 +68,13 @@
 </body>
 
 <template name="vice">
-  <li>{{text}} <button class="black">&times;</button></li>
+  <li>{{text}} <button id="black" class="delete">&times;</button></li>
 </template>
 
 <template name="emergencyContact">
   <form class="editContact">
-    <input class="black" type="text" name="contactName" placeholder="Contact name" />
-    <input class="black" type="tel" pattern='^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$' name="contactNumber" placeholder="Contact number (999) 999-9999" />
+    <input class="black" type="text" name="contactName" placeholder="Contact name" /><br>
+    <input class="black" type="tel" pattern='^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$' name="contactNumber" placeholder="Contact number (999) 999-9999" /><br>
     <input class="black" type="submit" />
   </form>
 </template>
