@@ -22,7 +22,7 @@ var getYelpOauthBinding = function(url) {
 }
 
 Meteor.methods({
-  searchYelp: function(search, isCategory, latitude, longitude) {
+  searchYelp: function(search, isCategory, latitude, longitude, range) {
     this.unblock();
     
     console.log('Yelp search for userId: ' + this.userId + '(search, isCategory, lat, lon) with vals (', search, isCategory, latitude, longitude, ')');
@@ -35,10 +35,12 @@ Meteor.methods({
     // Build up query
     var parameters = {};
     // Search term or categories query
-    if(isCategory)
-      parameters.category_filter = search;
-    else
-      parameters.term = search;
+    // if(isCategory)
+    //   parameters.category_filter = search;
+    // else
+    //   parameters.term = search;
+
+    parameters.term= search;
 
     // Set lat, lon location, if available or default location
     if(longitude && latitude)
@@ -46,8 +48,12 @@ Meteor.methods({
     else
       parameters.location = 'New+York';
 
-    // Results limited to 5
-    parameters.limit = 5;
+    if (range) {
+      parameters.radius_filter = range;
+    }
+    parameters.sort = 1;
+
+    parameters.limit = 20;
 
     var result = oauthBinding.get(url, parameters).data;
 

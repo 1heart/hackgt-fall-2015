@@ -108,7 +108,7 @@ Meteor.methods({
   },
 
   getResults: function(lat, lon) {
-    result =  Meteor.call("searchYelp", "bar", "", lat, lon);
+    result =  Meteor.call("searchYelp", "bar", "", lat, lon, 200);
     return result;
   }
 });
