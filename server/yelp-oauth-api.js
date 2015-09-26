@@ -51,8 +51,6 @@ Meteor.methods({
 
     var result = oauthBinding.get(url, parameters).data;
 
-    Session.set('closest', result);
-
     // Only return .data because that is how yelp formats its responses
     return result;
   },
