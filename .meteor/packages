@@ -22,7 +22,6 @@ accounts-ui
 accounts-password
 quietcreep:formation
 twbs:bootstrap
-oauth1
 aldeed:simple-schema
-oauth
 twitter
+oauth1
