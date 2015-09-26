@@ -11,10 +11,6 @@ Meteor.setInterval(function() {
   }, 5000);
 
 
-
-  // counter starts at 0
-  Session.setDefault('counter', 0);
-
   Template.body.helpers({
     vices: function() {
       return Vices.find({$or: [{owner: Meteor.userId()}]});
