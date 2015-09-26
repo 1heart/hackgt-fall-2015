@@ -1,18 +1,14 @@
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
 
   Template.body.helpers({
     vices: function() {
       return Vices.find({$or: [{owner: Meteor.userId()}]});
     },
-    contactName: function() {
-      return "myName";
-    },
-    contactNumber: function() {
-      return "myNumber";
+    contact: function() {
+      // return Contacts.find({});
+      return Contacts.findOne({owner: Meteor.userId()});
     }
-  });
+  }); 
 
   Template.body.events({
     "submit .new-vice": function(event) {
@@ -31,6 +27,21 @@ if (Meteor.isClient) {
 
       // Clear form
       event.target.text.value = "";
+    }
+  });
+
+  Template.emergencyContact.events({
+    "submit .editContact": function(event){
+      event.preventDefault();
+
+      var name = event.target.contactName.value;
+      var number = event.target.contactNumber.value;
+
+      Meteor.call("addContact", name, number);
+ 
+      event.target.contactName.value = "";
+      event.target.contactNumber.value = "";
+
     }
   });
 
@@ -53,5 +64,28 @@ if (Meteor.isServer) {
 }
 
 Vices = new Mongo.Collection("vices");
+Contacts = new Mongo.Collection("contacts");
 
+Meteor.methods({
+  addContact: function(name, number) {
+    if (! Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
+
+    }
+
+    Contacts.update(
+        {owner: Meteor.userId()},
+        {
+          owner: Meteor.userId(),
+          username: Meteor.user().username,
+          contactName: name,
+          contactNumber: number
+        },
+        {
+          upsert: true
+        }
+      );
+
+  }
+});
 
