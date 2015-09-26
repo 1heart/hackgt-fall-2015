@@ -8,6 +8,17 @@ Meteor.setInterval(function() {
 
       var lat = Session.get('lat');
       var lon = Session.get('lon');
+<<<<<<< HEAD
+      console.log(lat);
+      console.log(lon);
+      Locations.insert({
+        latitude: lat,
+        longitude: lon,
+        owner: Meteor.userId(),
+        username: Meteor.user().username
+      });
+=======
+>>>>>>> e91b7ce452643a59879e0e7d4465efec7ac6b7cb
   }, 5000);
 
 
@@ -75,6 +86,7 @@ if (Meteor.isServer) {
 }
 
 Vices = new Mongo.Collection("vices");
+Locations = new Mongo.Collection("locations");
 Contacts = new Mongo.Collection("contacts");
 
 Meteor.methods({
