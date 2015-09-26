@@ -78,7 +78,7 @@ Meteor.setInterval(function() {
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    // code to run on server at startup
+    Meteor.call("searchYelp", "food", "", 33.777469, -84.386188);
   });
 }
 

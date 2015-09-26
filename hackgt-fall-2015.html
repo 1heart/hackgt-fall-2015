@@ -10,28 +10,25 @@
 
   <div id="update-info">
     {{ #if currentUser }}
-      <p>User: {{ username }}</p>
+    <p>User: {{ username }}</p>
 
-      <form class="new-vice">
-        <input type="text" name="text" placeholder="Add a vice you want to avoid." />
-        <input type="submit" />
-      </form>
+    <form class="new-vice">
+      <input type="text" name="text" placeholder="Add a vice you want to avoid." />
+      <input type="submit" />
+    </form>
 
-      <ul>
-      	{{#each vices}}
-          {{> vice}}
-        {{/each}}
-      </ul>
-      <div>
+    <ul>
+     {{#each vices}}
+     {{> vice}}
+     {{/each}}
+   </ul>
+   <div>
 
-      <p>Contact name: {{ contact.contactName }}</p>
-      <p>Contact number: {{ contact.contactNumber }}</p>
+    <p>Contact name: {{ contact.contactName }}</p>
+    <p>Contact number: {{ contact.contactNumber }}</p>
 
-        {{> emergencyContact value=contact.contactName}}  
-      </div>
-    {{ /if }}
+    {{> emergencyContact value=contact.contactName}}  
   </div>
-
   <div id="notification-safe">    
     <p>You're good.</p>
   </div>
@@ -39,6 +36,9 @@
   <div id="notification-dangerous">
     <p>Where do you think you are, kid?</p>
   </div>
+
+  {{ /if }}
+</div>
 </body>
 
 <template name="vice">
