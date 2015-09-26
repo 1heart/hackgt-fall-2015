@@ -18,11 +18,12 @@ html,body {
 h1 {
   font-family:Pacifico;
   font-size:44pt;
-  color:#DDCCEE;
+  color:#CCCCFF;
 }
 
 .lead {
   color:#DDCCEE;
+  margin-bottom: 7px;
 }
 
 /* Custom container */
@@ -48,13 +49,7 @@ li {
    list-style-type: none;
 }
 
-.black {
-  color: black;
-}
 
-#black {
-  color: black;
-}
 
 .delete {
   text-align: right;
@@ -65,4 +60,19 @@ li {
   max-width: 320px;
   margin-left: auto;
   margin-right: auto;
+}
+
+a#login-name-link {
+  text-decoration: none;
+  font-size: 20px;
+  margin-top: -20px;
+}
+
+.login-link-and-dropdown-list {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+form {
+  color: black;
 }
