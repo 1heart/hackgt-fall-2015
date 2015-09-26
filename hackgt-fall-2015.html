@@ -39,7 +39,7 @@
 <template name="emergencyContact">
   <form class="editContact">
     <input type="text" name="contactName" placeholder="Contact name" value=""/>
-    <input type="text" name="contactNumber" placeholder="Contact number" />
+    <input type="tel" pattern='[\(]\d{3}[\)] \d{3}[\-]\d{4}' name="contactNumber" placeholder="Contact number (999) 999-9999" />
     <input type="submit" />
   </form>
 </template>
