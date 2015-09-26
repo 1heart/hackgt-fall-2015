@@ -49,8 +49,12 @@ Meteor.methods({
     // Results limited to 5
     parameters.limit = 5;
 
+    var result = oauthBinding.get(url, parameters).data;
+
+    Session.set('closest', result);
+
     // Only return .data because that is how yelp formats its responses
-    return oauthBinding.get(url, parameters).data;
+    return result;
   },
   yelpBusiness: function(id) {
     this.unblock();
