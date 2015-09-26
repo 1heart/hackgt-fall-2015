@@ -6,40 +6,46 @@
   <h1>VirtuoCity</h1>
   {{> loginButtons}}
 
-  {{ #if currentUser }}
+  <button id="toggle-update-info">Update info</button>
 
-    <form class="new-vice">
-      <input type="text" name="text" placeholder="Add a vice you want to avoid." />
-      <input type="submit" />
-    </form>
+  <div id="update-info">
+    {{ #if currentUser }}
+      <p>User: {{ username }}</p>
 
-    <ul>
-    	{{#each vices}}
-        {{> vice}}
-      {{/each}}
-    </ul>
-    <div>
+      <form class="new-vice">
+        <input type="text" name="text" placeholder="Add a vice you want to avoid." />
+        <input type="submit" />
+      </form>
 
-    <p>Contact name: {{ contact.contactName }}</p>
-    <p>Contact number: {{ contact.contactNumber }}</p>
+      <ul>
+      	{{#each vices}}
+          {{> vice}}
+        {{/each}}
+      </ul>
+      <div>
 
-      {{> emergencyContact}}  
-    </div>
-  {{ /if }}
+      <p>Contact name: {{ contact.contactName }}</p>
+      <p>Contact number: {{ contact.contactNumber }}</p>
+
+        {{> emergencyContact value=contact.contactName}}  
+      </div>
+    {{ /if }}
+  </div>
+
+  <div id="notification">
+    
+  </div>
 </body>
 
+
 <template name="vice">
-
-  {{ username }}
-
-
   <li>{{text}} <button class="delete">&times;</button></li>
 </template>
 
 <template name="emergencyContact">
   <form class="editContact">
-    <input type="text" name="contactName" placeholder="Contact name" value=""/>
-    <input type="tel" pattern='[\(]\d{3}[\)] \d{3}[\-]\d{4}' name="contactNumber" placeholder="Contact number (999) 999-9999" />
+    <input type="text" name="contactName" placeholder="Contact name" />
+    <input type="tel" pattern='^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$' name="contactNumber" placeholder="Contact number (999) 999-9999" />
     <input type="submit" />
   </form>
 </template>
