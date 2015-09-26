@@ -1,45 +1,47 @@
 <head>
   <title>VirtuoCity</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin Slab">
 </head>
 
 <body>
-  <h1>VirtuoCity</h1>
+  <div id = "header">
+  <h1><b>Virtuo</b>City</h1>
+  </div>
   {{> loginButtons}}
 
   {{ #if currentUser }}
-
-    <form class="new-vice">
-      <input type="text" name="text" placeholder="Add a vice you want to avoid." />
-      <input type="submit" />
-    </form>
-
-    <ul>
-    	{{#each vices}}
-        {{> vice}}
-      {{/each}}
-    </ul>
-    <div>
-
-    <p>Contact name: {{ contact.contactName }}</p>
-    <p>Contact number: {{ contact.contactNumber }}</p>
-
-      {{> emergencyContact}}  
+    <div id = "content">
+      <div id = "viceSec">
+        <form class="new-vice">
+          <input type="text" name="text" placeholder="Add a vice you want to avoid." />
+          <input type="submit" />
+        </form>
+        <ul id = "list">
+        	{{#each vices}}
+            {{> vice}}
+          {{/each}}
+        </ul>
+      </div>
+      <div id = "contactSec">
+        <p>Contact name: {{ contact.contactName }}</p>
+        <p>Contact number: {{ contact.contactNumber }}</p>
+          {{> emergencyContact}}  
+      </div>
     </div>
   {{ /if }}
 </body>
 
 <template name="vice">
-
-  {{ username }}
-
-
   <li>{{text}} <button class="delete">&times;</button></li>
 </template>
 
 <template name="emergencyContact">
   <form class="editContact">
-    <input type="text" name="contactName" placeholder="Contact name" value=""/>
-    <input type="tel" pattern='[\(]\d{3}[\)] \d{3}[\-]\d{4}' name="contactNumber" placeholder="Contact number (999) 999-9999" />
+    <input type="text" name="contactName" placeholder="Contact name" value=""/><br>
+    <input type="tel" pattern='[\(]\d{3}[\)] \d{3}[\-]\d{4}' name="contactNumber" placeholder="Contact number (999) 999-9999" /><br>
     <input type="submit" />
   </form>
 </template>
