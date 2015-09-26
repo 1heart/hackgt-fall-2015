@@ -78,7 +78,6 @@ Meteor.setInterval(function() {
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    // code to run on server at startup
   });
 }
 
@@ -106,6 +105,11 @@ Meteor.methods({
         }
       );
 
+  },
+
+  getResults: function(lat, lon) {
+    result =  Meteor.call("searchYelp", "bar", "", lat, lon, 200);
+    return result;
   }
 });
 
