@@ -11,9 +11,11 @@ Template.body.events({
 });
 
 setDangerous = function() {
-	return $("#notification").html("You're screwing up...");
+	$("#notification-safe").hide();
+	$("#notification-dangerous").show();
 }
 
 setSafe = function() {
-	return $("#notification").html("You're good!");
+	$("#notification-dangerous").hide();
+	$("#notification-safe").show();
 }
