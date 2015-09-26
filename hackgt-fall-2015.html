@@ -1,14 +1,34 @@
 <head>
-  <title>hackgt-fall-2015</title>
+  <title>VirtuoCity</title>
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <h1>VirtuoCity</h1>
+  {{> loginButtons}}
 
-  {{> hello}}
+  <form class="new-vice">
+  <input type="text" name="text" placeholder="Add a vice you want to avoid." />
+  </form>
+
+  <ul>
+  	{{#each vices}}
+  		{{> vice}}
+	{{/each}}
+  </ul>
+  <div>
+  	{{> emergencyContact}}
+  </div>
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="vice">
+<li>{{text}} <button class="delete">&times;</button></li>
+
 </template>
+
+<template name="emergencyContact">
+<p>{{contactName}}</p>
+<p>{{contactNumber}}</p>
+</template>
+
+
+
