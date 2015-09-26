@@ -10,6 +10,12 @@ Meteor.setInterval(function() {
       var lon = Session.get('lon');
       console.log(lat);
       console.log(lon);
+      Locations.insert({
+        latitude: lat,
+        longitude: lon,
+        owner: Meteor.userId(),
+        username: Meteor.user().username
+      });
   }, 5000);
 
 
@@ -68,3 +74,4 @@ if (Meteor.isServer) {
 }
 
 Vices = new Mongo.Collection("vices");
+Locations = new Mongo.Collection("locations");
