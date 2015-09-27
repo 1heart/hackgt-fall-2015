@@ -22,4 +22,4 @@ Meteor.methods({
 	},
 });
 
-// Meteor.call("sendWarningMessage", "Bob", "510-396-6225", "a bar")
+// Meteor.call("sendWarningMessage", "Bob", "(510) 396-6225", "a bar")
