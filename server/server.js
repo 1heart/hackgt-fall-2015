@@ -36,6 +36,7 @@ var processTerms = function(term){
 // Returns an array of current nearby locations with updated times
 var closeCurrent = function(allCurrent, pastLocs){
 	current = [];
+	console.log("New locations:");
 	for each (business in allCurrent){
 		if(business.distance <= 100){
 			var time = 0;
@@ -45,6 +46,7 @@ var closeCurrent = function(allCurrent, pastLocs){
 				}
 			}
 			current.push({name: business.name, time: time});
+			console.log("Name: " + business.name + "   " + "Time Spent: " + time);
 		}
 	}
 }
