@@ -1,0 +1,133 @@
+html,body {
+  height:100%;
+}
+
+#login-dropdown-list {
+  position: relative;
+  text-align: center;
+  margin-top: 15px;
+}
+
+#login-buttons .login-close-text {
+  float: right;
+  color: black;
+  visibility: hidden;
+}
+.login-close-text:before {
+  float: right;
+  content: '    X';
+  text-decoration: none;
+  visibility: visible;
+}
+
+#login-buttons a, .accounts-dialog a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#signup-link, #back-to-login-link {
+  color: black;
+}
+
+.login-form, .login-password-form {
+
+}
+
+h1 {
+  font-family:Pacifico;
+  font-size:44pt;
+  color:#CCCCFF;
+}
+
+.lead {
+  color:#DDCCEE;
+  margin-bottom: 7px;
+}
+
+/* Custom container */
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+  min-height:100%;
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.45), 
+      rgba(0, 0, 0, 0.45)
+    ),
+    url("background.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color:#eee;
+  overflow:hidden;
+}
+
+.container-full a {
+  color:#efefef;
+  text-decoration:none;
+}
+
+.v-center {
+  margin-top:7%;
+}
+
+li {
+  list-style-type: none;
+}
+
+.delete {
+  text-align: right;
+}
+
+.vices {
+  text-align: left;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a#login-name-link {
+  text-decoration: none;
+  font-size: 20px;
+  margin-top: -20px;
+}
+
+a#login-sign-in-link {
+  text-decoration: none;
+  font-size: 20px;
+  margin-top: -20px;
+}
+
+
+.login-link-and-dropdown-list {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+a.login-close-text {
+  color: black;
+}
+
+form {
+  color: black;
+}
+
+#login-dropdown-list.account-dialog {
+  margin-left: 100px;
+
+}
+
+#login-dropdown-list {
+  padding-bottom: 20pt;
+}
+
+#update-info {
+  display: block;
+}
+
+.v-bot {
+  font-size: 24pt;
+  position: relative;
+  vertical-align: bottom;
+}
