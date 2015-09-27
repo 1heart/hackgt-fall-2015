@@ -1,6 +1,7 @@
 Meteor.startup(function() {
 	$("#update-info").hide();
 	setSafe();
+
 });
 
 Template.body.events({
