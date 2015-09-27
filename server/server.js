@@ -92,6 +92,7 @@ var makeAlert = function(current, id, name, vice){
 	}
 	else if (max === 10){
 		// Push notifications
+		Meteor.call("vibrate");
 		serverMessages.notify('serverMessage:error', 'Test title', 'Test message');
 	}
 }

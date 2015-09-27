@@ -11,13 +11,13 @@ Meteor.setInterval(function() {
       var lat = Session.get('lat');
       var lon = Session.get('lon');
       
-      Locations.update({_id: Meteor.userId()}, {
-        _id: Meteor.userId(),
-        latitude: lat,
-        longitude: lon,
-        owner: Meteor.userId(),
-        username: Meteor.user().username
-      }, {upsert: true});
+      // Locations.update({_id: Meteor.userId()}, {
+      //   _id: Meteor.userId(),
+      //   latitude: lat,
+      //   longitude: lon,
+      //   owner: Meteor.userId(),
+      //   username: Meteor.user().username
+      // }, {upsert: true});
   }, 5000);
 
 
@@ -137,3 +137,17 @@ Meteor.methods({
   }
 });
 
+
+if (Meteor.isCordova) { // if we're running as a native mobile app...
+
+  Meteor.startup(function () {
+
+    Buzz.find({}).observe({
+      added: function (doc) { // ...whenever a buzz is added
+
+        // ..do a vibrate
+        navigator.notification.vibrate(500)
+      }
+    })
+  })
+}
