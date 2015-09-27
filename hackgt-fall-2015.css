@@ -29,6 +29,10 @@ html,body {
   color: black;
 }
 
+.login-form, .login-password-form {
+
+}
+
 h1 {
   font-family:Pacifico;
   font-size:44pt;
@@ -103,4 +107,8 @@ form {
 #login-dropdown-list.account-dialog {
   margin-left: 100px;
 
+}
+
+#login-dropdown-list {
+  padding-bottom: 20pt;
 }
