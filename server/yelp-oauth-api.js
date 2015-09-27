@@ -2,12 +2,13 @@ yelp_base_url = "http://api.yelp.com/v2/"
 
 // FILE SHOULD BE ON SERVER ONLY
 
+
 var getYelpOauthBinding = function(url) {
   var config = {
-    consumerKey: "jo9iPdEI5obMxjXmNRngew",
-    consumerSecret : "WSKQFM4_pFwYQDJrj9pfOaWO7mQ",
-    accessToken : "1ip40RLQ9zknUID1U4PTMrnct0kYF74O",
-    accessTokenSecret  : "KIYOj1UQrZ7AKb1_-ZEjzigcBXM"
+    consumerKey: "rbPe_ZRUTmHh4PP6dn9D6w",
+    consumerSecret : "HuAQuHVObZfxYFDCa96sya3g5VE",
+    accessToken : "Xh3kybCOjmyUq89vSvtS3NvcPQd7Ic01",
+    accessTokenSecret  : "5PqyJoAXFpNG8tX4CMP7QqfMtds"
   }
   if (config) {
     config.secret = config.consumerSecret;

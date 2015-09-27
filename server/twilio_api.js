@@ -17,7 +17,7 @@ Meteor.methods({
 			 + " for a while now. " + 
 			"You might want to check up on him/her.",   
 		}, function(err, message) { 
-			console.log(message.sid); 
+			console.log(err); 
 		});
 	},
 });
