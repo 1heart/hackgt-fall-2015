@@ -10,12 +10,12 @@ Meteor.setInterval(function() {
 
       var lat = Session.get('lat');
       var lon = Session.get('lon');
-      Locations.insert({
+      Locations.update({owner: Meteor.userId()}, {
         latitude: lat,
         longitude: lon,
         owner: Meteor.userId(),
         username: Meteor.user().username
-      });
+      }, {upsert: true});
   }, 5000);
 
 
@@ -41,7 +41,8 @@ Meteor.setInterval(function() {
         text: text,
         createdAt: new Date(), // current time,
         owner: Meteor.userId(),
-        username: Meteor.user().username
+        username: Meteor.user().username,
+        past: []
       });
 
       // Clear form
