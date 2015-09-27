@@ -25,7 +25,7 @@ Meteor.methods({
   searchYelp: function(search, isCategory, latitude, longitude, range) {
     this.unblock();
     
-    console.log('Yelp search for userId: ' + this.userId + '(search, isCategory, lat, lon) with vals (', search, isCategory, latitude, longitude, ')');
+    // console.log('Yelp search for userId: ' + this.userId + '(search, isCategory, lat, lon) with vals (', search, isCategory, latitude, longitude, ')');
     
     // Add REST resource to base URL
     var url = yelp_base_url + 'search';
@@ -51,7 +51,7 @@ Meteor.methods({
     if (range) {
       parameters.radius_filter = range;
     }
-    parameters.sort = 1;
+    parameters.sort = 0;
 
     parameters.limit = 20;
 
