@@ -81,21 +81,21 @@ Meteor.setInterval(function() {
 
 
   // For push notifications
-  serverMessages.listen('serverMessage:info', function (subject, message, options) {
-    Notifications.info(subject, message, options);
-  });
+  // serverMessages.listen('serverMessage:info', function (subject, message, options) {
+  //   Notifications.info(subject, message, options);
+  // });
 
-  serverMessages.listen('serverMessage:warning', function (subject, message, options) {
-    Notifications.warn(subject, message, options);
-  });
+  // serverMessages.listen('serverMessage:warning', function (subject, message, options) {
+  //   Notifications.warn(subject, message, options);
+  // });
 
-  serverMessages.listen('serverMessage:success', function (subject, message, options) {
-    Notifications.success(subject, message, options);
-  });
+  // serverMessages.listen('serverMessage:success', function (subject, message, options) {
+  //   Notifications.success(subject, message, options);
+  // });
 
-  serverMessages.listen('serverMessage:error', function (subject, message, options) {
-    Notifications.error(subject, message, options);
-  });
+  // serverMessages.listen('serverMessage:error', function (subject, message, options) {
+  //   Notifications.error(subject, message, options);
+  // });
 
 }
 
@@ -109,7 +109,7 @@ Locations = new Mongo.Collection("locations");
 Contacts = new Mongo.Collection("contacts");
 
 // For push notifications
-serverMessages = new ServerMessages();
+// serverMessages = new ServerMessages();
 
 Meteor.methods({
   addContact: function(name, number) {
