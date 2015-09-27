@@ -2,11 +2,6 @@ html,body {
   height:100%;
 }
 
-.signin {
-  margin-left:16px;
-  margin-top:10px;
-}
-
 #login-dropdown-list {
   left: -70px;
 }

@@ -58,8 +58,8 @@ Meteor.setInterval(function() {
 
       Meteor.call("addContact", name, number);
  
-      event.target.contactName.value = "";
-      event.target.contactNumber.value = "";
+      event.target.contactName.value = name;
+      event.target.contactNumber.value = number;
 
     }
   });

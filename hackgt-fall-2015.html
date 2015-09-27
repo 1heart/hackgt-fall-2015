@@ -41,9 +41,7 @@
                   {{/each}}
                 </ul>
                 <div>
-                  <p>Contact name: {{ contact.contactName }}</p>
-                  <p>Contact number: {{ contact.contactNumber }}</p>
-                    {{> emergencyContact value=contact.contactName}}
+                  {{> emergencyContact value=contact.contactName}}
                 </div>
               {{ /if }}
             </div>
