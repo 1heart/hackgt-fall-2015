@@ -1,5 +1,4 @@
 
-
 Meteor.setInterval(function() {
 	// For every user
 	Locations.find({}).forEach(function(location){

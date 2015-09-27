@@ -1,5 +1,7 @@
 if (Meteor.isClient) {
   //Geolocation edits
+
+
 Meteor.setInterval(function() {
   navigator.geolocation.getCurrentPosition(function(position) {
 
