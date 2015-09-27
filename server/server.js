@@ -28,9 +28,9 @@ Meteor.setInterval(function() {
 			makeAlert(currentLocs, id, name, vice.text);
 		});
 
-// 	});
+	});
 
-// }, 5000);
+}, 5000);
 
 
 // Replaces spaces with + signs
@@ -72,8 +72,8 @@ var closeCurrent = function(allCurrent, pastLocs){
 // Makes an alert if necessary
 var makeAlert = function(current, id, name, vice){
 	var max = 0;
-	console.log(Contacts.findOne({owner: id}).contactNumber);
-	console.log(Contacts.findOne({owner: id}).contactName);
+	// console.log(Contacts.findOne({owner: id}).contactNumber);
+	// console.log(Contacts.findOne({owner: id}).contactName);
 	for (business of current){
 		if(business.time > max){
 			max = business.time;
@@ -81,8 +81,9 @@ var makeAlert = function(current, id, name, vice){
 	}
 	if(max === 30){
 		// Send SMS to friend
-		contactNumber = Contacts.findOne({owner: id}).contactNumber;
-		if(typeof(contactNumber) !== 'undefined'){
+		contact = Contacts.findOne({ownder: id});
+		if(typeof(contact) !== 'undefined'){
+			contactNumber = contact.contactNumber;
 			Meteor.call("sendWarningMessage", name, contactNumber, vice)
 		}
 	}
