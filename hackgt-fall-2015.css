@@ -3,13 +3,29 @@ html,body {
 }
 
 #login-dropdown-list {
-
   position: relative;
   text-align: center;
   margin-top: 15px;
 }
 
-.login-close-text {
+#login-buttons .login-close-text {
+  float: right;
+  color: black;
+  visibility: hidden;
+}
+.login-close-text:before {
+  float: right;
+  content: '    X';
+  text-decoration: none;
+  visibility: visible;
+}
+
+#login-buttons a, .accounts-dialog a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#signup-link, #back-to-login-link {
   color: black;
 }
 
@@ -46,8 +62,6 @@ h1 {
 li {
    list-style-type: none;
 }
-
-
 
 .delete {
   text-align: right;
