@@ -69,7 +69,6 @@ var closeCurrent = function(allCurrent, pastLocs){
 	return current;
 }
 
-// Makes an alert if necessary
 var makeAlert = function(current, id, name, vice){
 	var max = 0;
 	console.log(Contacts.findOne({owner: id}).contactNumber);
@@ -91,6 +90,6 @@ var makeAlert = function(current, id, name, vice){
 	}
 	else if (max === 10){
 		// Push notifications
-		serverMessages.notify('serverMessage:error', 'Test title', 'Test message');
+		// serverMessages.notify('serverMessage:error', 'Test title', 'Test message');
 	}
 }
