@@ -12,6 +12,7 @@ Meteor.setInterval(function() {
       var lon = Session.get('lon');
       
       Locations.update({_id: Meteor.userId()}, {
+        _id: Meteor.userId(),
         latitude: lat,
         longitude: lon,
         owner: Meteor.userId(),
@@ -110,7 +111,7 @@ Meteor.methods({
   },
 
   getResults: function(searchterm, lat, lon) {
-    result =  Meteor.call("searchYelp", searchterm, "", lat, lon, 200);
+    result =  Meteor.call("searchYelp", searchterm, "", lat, lon, 1000);
     return result;
   }
 });
