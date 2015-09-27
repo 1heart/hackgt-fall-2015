@@ -10,7 +10,8 @@ Meteor.setInterval(function() {
 
       var lat = Session.get('lat');
       var lon = Session.get('lon');
-      Locations.update({owner: Meteor.userId()}, {
+      
+      Locations.update({_id: Meteor.userId()}, {
         latitude: lat,
         longitude: lon,
         owner: Meteor.userId(),

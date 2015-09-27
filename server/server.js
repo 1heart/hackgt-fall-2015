@@ -2,19 +2,24 @@
 
 Meteor.setInterval(function() {
 	// For every user
-	db.locations.find().forEach(function(){
-		latitude = this.lat;
-		longitude = this.lon;
-		id = this.owner;
+	Locations.find().forEach(function(location){
+		latitude = location.latitude;
+		longitude = location.longitude;
+		id = location.owner;
+		console.log(Vices.find({owner: id}).length);
 		// For every vice belonging to the user
-		db.vices.find({owner: id}).forEach(function(){
-			searchTerms = processTerms(this.text);
-			allCurrent = getResults(searchTerms, latitude, longitude).businesses;
-			pastLocs = this.past;
+		var vices = Vices.find({owner: id});
+		Object.keys(vices).forEach(function(key){
+			vice = vices[key];
+			console.log(vice);
+			searchTerms = processTerms(vice.text);
+			console.log(searchTerms);
+			allCurrent = Meteor.call("getResults",searchTerms, latitude, longitude).businesses;
+			pastLocs = vice.past;
 			currentLocs = closeCurrent(allCurrent, pastLocs);
 			// update 'past' property in vice
-			Vices.update({$and: [{owner: id}, {text: this.text}]},{
-				past: currentLocs;
+			Vices.update({$and: [{owner: id}, {text: vice.text}]},{
+				past: currentLocs
 			})
 		});
 
@@ -37,7 +42,7 @@ var processTerms = function(term){
 var closeCurrent = function(allCurrent, pastLocs){
 	current = [];
 	console.log("New locations:");
-	for each (business in allCurrent){
+	for (business of allCurrent){
 		if(business.distance <= 100){
 			var time = 0;
 			for(pastBusiness in pastLocs){
